@@ -1,0 +1,10 @@
+# node & bower
+node_modules
+dist
+.tmp
+.sass-cache
+bower_components
+
+# intellij
+.idea
+*.iml

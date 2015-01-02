@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="vitesse">Vitesse (km/h)</label>
+            <input type="text" class="form-control" id="vitesse" ng-model="vitesse" ng-change="calculAllure(vitesse)"/>
+        </div>
+
+        <div class="form-group">
+            <label for="allure">Allure (min/km)</label>
+            <input type="text" class="form-control" id="allure" ng-model="allure" ng-change="calculVitesse(allure)"/>
+        </div>
+
+    </div>
+</div>
