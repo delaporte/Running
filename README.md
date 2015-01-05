@@ -3,6 +3,8 @@ Running
 
 convertisseur de vitesse en allure et inversement
 
+Application full angularJS
+
 
 $ npm install
 installe les dépendences nodes
