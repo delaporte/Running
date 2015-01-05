@@ -10,7 +10,8 @@
  */
 angular
   .module('runningApp', [
-    'ngRoute'
+    'ngRoute',
+    'timeFormateur.filter'
   ])
   .config(function ($routeProvider) {
     $routeProvider

@@ -8,9 +8,11 @@
  * Controller of the runningApp
  */
 angular.module('runningApp')
-  .controller('ConversionCtrl', function ($scope) {
+  .controller('ConversionCtrl', function ($scope, $filter) {
     $scope.calculAllure = function (vitesse) {
-      $scope.allure = 60 / vitesse;
+      var allureDecimale = 60 / vitesse;
+      //$filter('timeFormateur')(allureDecimale);
+      $scope.allure = $filter('timeFormateur')(allureDecimale);
     };
 
     $scope.calculVitesse = function (allure) {
