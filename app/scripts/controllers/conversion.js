@@ -11,12 +11,12 @@ angular.module('runningApp')
   .controller('ConversionCtrl', function ($scope, $filter) {
     $scope.calculAllure = function (vitesse) {
       var allureDecimale = 60 / vitesse;
-      //$filter('timeFormateur')(allureDecimale);
-      $scope.allure = $filter('timeFormateur')(allureDecimale);
+      $scope.allure = $filter('decimalToTimeFormateur')(allureDecimale);
     };
 
     $scope.calculVitesse = function (allure) {
-      $scope.vitesse = 60 / allure;
+      var allureDecimale = $filter('timetoDecimalFormateur')(allure);
+      $scope.vitesse = 60 / allureDecimale;
     };
 
     $scope.vitesse = 10;
