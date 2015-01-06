@@ -16,7 +16,7 @@ angular.module('runningApp')
 
     $scope.calculVitesse = function (allure) {
       var allureDecimale = $filter('timetoDecimalFormateur')(allure);
-      $scope.vitesse = 60 / allureDecimale;
+      $scope.vitesse = (60 / allureDecimale).toFixed(2);
     };
 
     $scope.vitesse = 10;
@@ -31,7 +31,7 @@ angular.module('runningApp')
         {'competition' : 'marathon (42.195 km)', 'distance' : 42.195},
         {'competition' : '100 bornes', 'distance' : 100},
         {'competition' : '100 miles (160.93 km)', 'distance' : 160.93}
-    ]
+    ];
     $scope.kms = [5,10,15,20];
 
     $scope.generateKmTable = function(distance, eachKm) {
