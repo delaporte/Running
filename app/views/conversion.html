@@ -1,5 +1,8 @@
+<h1>Calculette vitesse / allure et temps de passages</h1>
+
 <div class="row">
     <div class="col-md-6">
+        <h2>Vitesse / allure</h2>
         <div class="form-group">
             <label for="vitesse">Vitesse (km/h)</label>
             <input type="text" class="form-control" id="vitesse" ng-model="vitesse" ng-change="calculAllure(vitesse)"/>
@@ -10,5 +13,28 @@
             <input type="text" class="form-control" id="allure" ng-model="allure" ng-change="calculVitesse(allure)" placeholder="min:sec"/>
         </div>
 
+        <div class="form-group">
+            <label for="distance">Compétition</label>
+            <select ng-model="distance" id="distance" ng-options="competition.distance as competition.competition for competition in competitions" class="form-control" ng-change="generateKmTable(distance, eachKm)"></select>
+        </div>
+
+        <div class="form-group">
+            <input type="checkbox" id="affichage" ng-model="eachKm" ng-change="generateKmTable(distance, eachKm)"/><label for="affichage">Afficher le temps pour chaque km</label>
+        </div>
+
+    </div>
+    <div class="col-md-6">
+        <h2>Temps de passage</h2>
+
+        <table class="table">
+            <tr>
+                <th>KM</th>
+                <th>chrono</th>
+            </tr>
+            <tr ng-repeat="km in kms" ng-class="{info : km % 5 == 0}">
+                <td>{{km}} km</td>
+                <td>{{calculTemps(km) | decimalToTimeFormateur}}</td>
+            </tr>
+        </table>
     </div>
 </div>

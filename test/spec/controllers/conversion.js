@@ -21,6 +21,6 @@ describe('Controller: ConversionCtrl', function () {
   });
 
   it('should init allure to 6 min/km', function () {
-    expect(scope.allure).toBe(6);
+    expect(scope.allure).toBe('6:00');
   });
 });

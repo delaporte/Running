@@ -5,14 +5,22 @@ var durationFilter = angular.module('timeFormateur.filter', []);
 durationFilter
 .filter('decimalToTimeFormateur', function() {
     return function(minutesDecimal) {
+        var timeString = "";
 
         var integerPart = Math.floor(minutesDecimal);
-        var decimalPart = minutesDecimal % 1;
+        if (integerPart > 59) {
+            var hours = Math.floor(integerPart / 60);
+            var minutes = integerPart % 60;
+            timeString += hours + "h";
+            timeString += minutes < 10 ? ("0" + minutes) : (minutes);
+            timeString += ":";
+        } else {
+            timeString += integerPart + ":";
+        }
 
+        var decimalPart = minutesDecimal % 1;
         var decimalPart = decimalPart * 100;
         var seconds = Math.round(decimalPart * 60 / 100);
-
-        var timeString = integerPart + ":";
         timeString += (seconds < 10) ? ("0" + seconds) : (seconds);
         return timeString;
     }

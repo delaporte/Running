@@ -16,6 +16,9 @@ describe('filter', function () {
         expect(decimalToTimeFormateurFilter(1.5)).toBe('1:30'); // 1,5 min => 1:30
         expect(decimalToTimeFormateurFilter(5.25)).toBe('5:15'); // 5,25 min => 5:15
         expect(decimalToTimeFormateurFilter(5.26)).toBe('5:16'); // 5,26 min => 5:16 (arrondi mathematique)
+
+        expect(decimalToTimeFormateurFilter(65.5)).toBe('1h05:30'); // 90 min => 1h30:00 (arrondi mathematique)
+        expect(decimalToTimeFormateurFilter(90)).toBe('1h30:00'); // 90 min => 1h30:00 (arrondi mathematique)
     }));
   });
 
