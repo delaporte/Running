@@ -23,6 +23,10 @@ angular
         templateUrl: 'views/conversion.html',
         controller: 'ConversionCtrl'
       })
+      .when('/estimation', {
+        templateUrl: 'views/estimation.html',
+        controller: 'EstimationCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

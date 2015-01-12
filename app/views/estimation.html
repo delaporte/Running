@@ -1,0 +1,22 @@
+<h1>Estimation VMA</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Performance sur une compétition</h2>
+
+        <div class="form-group">
+            <label for="allure">Chrono</label>
+            <input type="text" class="form-control" id="allure" ng-model="chrono" placeholder="3h25min32sec | 3h25 | 34min23sec" ng-change="calculVma(chrono, distance)"/>
+        </div>
+
+        <div class="form-group">
+            <label for="distance">Compétition</label>
+            <select ng-model="distance" id="distance" ng-options="competition.distance as competition.competition for competition in competitions" class="form-control" ng-change="calculVma(chrono, distance)"></select>
+        </div>
+
+    </div>
+    <div class="col-md-6">
+        <h2>VMA estimée {{vma}} km/H</h2>
+        <p>Estimation à partir de votre chronomère {{chrono}} sur {{distance}}km à {{pourcentage}}% de votre VMA</p>
+    </div>
+</div>

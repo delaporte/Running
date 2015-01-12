@@ -37,4 +37,20 @@ describe('filter', function () {
     }));
   });
 
+  describe('test stringToTimeFormateur', function() {
+
+    it('should convert string values to time in seconds',
+      inject(function(stringToTimeFormateurFilter) {
+        expect(stringToTimeFormateurFilter('1h')).toBe(3600);
+        expect(stringToTimeFormateurFilter('1h01')).toBe(3660);
+        expect(stringToTimeFormateurFilter('1h02min')).toBe(3720);
+        expect(stringToTimeFormateurFilter('1h01min30')).toBe(3690);
+        expect(stringToTimeFormateurFilter('31min')).toBe(1860);
+        expect(stringToTimeFormateurFilter('32min43')).toBe(1963);
+        expect(stringToTimeFormateurFilter('32min43sec')).toBe(1963);
+        expect(stringToTimeFormateurFilter('')).toBe(0);
+        expect(stringToTimeFormateurFilter('1')).toBe(3600);
+    }));
+  });
+
 });

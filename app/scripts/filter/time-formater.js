@@ -39,6 +39,50 @@ durationFilter
 
         return minutesDecimal;
     };
+})
+.filter('stringToTimeFormateur', function() {
+
+    var getTimeSegment = function(stringDecimal, separator) {
+        var timeToArray = stringDecimal.split(separator);
+
+        var time;
+        var timeToConvert;
+
+        if (timeToArray.length === 1) {
+            if (isNaN(timeToArray[0]) || isNaN(parseInt(timeToArray[0]))) {
+                time = 0;
+                timeToConvert = timeToArray[0];
+            } else {
+                time = timeToArray[0];
+                timeToConvert = '';
+            }
+        } else {
+            time = timeToArray[0];
+            timeToConvert = timeToArray[1];
+        }
+
+        time = isNaN(time) ? 0 : parseInt(time);
+
+        return [time, timeToConvert];
+    };
+
+    return function(stringDecimal) {
+        var timeToConvert = stringDecimal;
+        var milliseconds = 0;
+
+        var hours = getTimeSegment(timeToConvert, 'h');
+        milliseconds += hours[0] * 3600;
+        timeToConvert = hours[1];
+
+        var minutes = getTimeSegment(timeToConvert, 'min');
+        milliseconds += minutes[0] * 60;
+        timeToConvert = minutes[1];
+
+        var seconds = getTimeSegment(timeToConvert, 'sec');
+        milliseconds += seconds[0];
+
+        return milliseconds;
+    };
 });
 
 
